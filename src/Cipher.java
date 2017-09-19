@@ -10,30 +10,48 @@ public class Cipher {
 	public static final String SIMPLE_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ";
 
 	// Set this variable to the default alphabet you wish to use
-	private static final String DEFAULT_ALPHABET = SIMPLE_ALPHABET;
+	private static final String DEFAULT_ALPHABET = ALPHABET;
 
 	/**
 	 * Returns plaintext encrypted by the rotation cipher with a shift of
 	 * movement.
 	 * 
 	 * @param alphabet
-	 *          the alphabet to be used for the encryption
+	 *            the alphabet to be used for the encryption
 	 * @param plainText
-	 *          the plain text to be encrypted.
+	 *            the plain text to be encrypted.
 	 * @param shiftAmount
-	 *          the number of characters in ALPHABET to shift by.
+	 *            the number of characters in ALPHABET to shift by.
 	 * @return returns the encrypted plainText.
 	 */
-	public static String rotationCipherEncrypt(String plainText, int shiftAmount,
-			String alphabet) {
-		
-		// my solutoin is the best!!
-		
-		return "";
+	public static String rotationCipherEncrypt(String plainText, int shiftAmount, String alphabet) {
+
+		String output = "";
+
+		for (int i = 0; i < plainText.length(); i++) {
+			String plainLetter = plainText.substring(i, i + 1);
+			String encodedLetter = rotateLetter(plainLetter, shiftAmount, alphabet);
+			output += encodedLetter;
+		}
+
+		return output;
 	}
 
-	public static String rotationCipherEncrypt(String plainText,
-			int shiftAmount) {
+	private static String rotateLetter(String plainLetter, int shiftAmount, String alphabet) {
+		int index = alphabet.indexOf(plainLetter);
+		if (index == -1)
+			return "";
+
+		index += shiftAmount;
+		while (index < 0)
+			index += alphabet.length();
+		while (index >= alphabet.length())
+			index -= alphabet.length();
+
+		return alphabet.substring(index, index + 1);
+	}
+
+	public static String rotationCipherEncrypt(String plainText, int shiftAmount) {
 		return rotationCipherEncrypt(plainText, shiftAmount, DEFAULT_ALPHABET);
 	}
 
@@ -42,20 +60,18 @@ public class Cipher {
 	 * rotation cipher.
 	 * 
 	 * @param alphabet
-	 *          the alphabet to be used for the encryption
+	 *            the alphabet to be used for the encryption
 	 * @param cipherText
-	 *          the encrypted text.
+	 *            the encrypted text.
 	 * @param shiftAmount
-	 *          the key to decrypt the cipher.
+	 *            the key to decrypt the cipher.
 	 * @return returns the decrypted cipherText.
 	 */
-	public static String rotationCipherDecrypt(String cipherText, int shiftAmount,
-			String alphabet) {
+	public static String rotationCipherDecrypt(String cipherText, int shiftAmount, String alphabet) {
 		return "";
 	}
 
-	public static String rotationCipherDecrypt(String cipherText,
-			int shiftAmount) {
+	public static String rotationCipherDecrypt(String cipherText, int shiftAmount) {
 		return rotationCipherDecrypt(cipherText, shiftAmount, DEFAULT_ALPHABET);
 	}
 
@@ -66,15 +82,14 @@ public class Cipher {
 	 * in another ordering.
 	 * 
 	 * @param alphabet
-	 *          the alphabet to be used for the encryption
+	 *            the alphabet to be used for the encryption
 	 * @param plainText
-	 *          the plain text to be encrypted.
+	 *            the plain text to be encrypted.
 	 * @param permutation
-	 *          a permutation of alphabet, to be used in encoding
+	 *            a permutation of alphabet, to be used in encoding
 	 * @return returns the encrypted plainText.
 	 */
-	public static String permutationCipherEncrypt(String plainText,
-			String permutation, String alphabet) {
+	public static String permutationCipherEncrypt(String plainText, String permutation, String alphabet) {
 		return "";
 	}
 
@@ -82,15 +97,14 @@ public class Cipher {
 	 * Returns the result of decrypting cipherText with the key permutation.
 	 * 
 	 * @param alphabet
-	 *          the alphabet to be used for the encryption
+	 *            the alphabet to be used for the encryption
 	 * @param cipherText
-	 *          the encrypted text.
+	 *            the encrypted text.
 	 * @param code
-	 *          the decryption key
+	 *            the decryption key
 	 * @return returns the decrypted cipherText.
 	 */
-	public static String permutationCipherDecrypt(String cipherText, String code,
-			String alphabet) {
+	public static String permutationCipherDecrypt(String cipherText, String code, String alphabet) {
 		return "";
 	}
 
@@ -98,7 +112,7 @@ public class Cipher {
 	 * Returns a random permutation of the alphabet string
 	 * 
 	 * @param alphabet
-	 *          represents the alphabet
+	 *            represents the alphabet
 	 * @return a random permutation of alphabet
 	 */
 	public static String generateRandomPermutation(String alphabet) {
@@ -106,19 +120,18 @@ public class Cipher {
 	}
 
 	/**
-	 * Returns plaintext encrypted by the vigenere cipher encoded with the String
-	 * code
+	 * Returns plaintext encrypted by the vigenere cipher encoded with the
+	 * String code
 	 * 
 	 * @param alphabet
-	 *          the alphabet to be used for the encryption
+	 *            the alphabet to be used for the encryption
 	 * @param plainText
-	 *          the plain text to be encrypted.
+	 *            the plain text to be encrypted.
 	 * @param code
-	 *          the code to use as the encryption key.
+	 *            the code to use as the encryption key.
 	 * @return returns the encrypted plainText.
 	 */
-	public static String vigenereCipherEncrypt(String plainText, String code,
-			String alphabet) {
+	public static String vigenereCipherEncrypt(String plainText, String code, String alphabet) {
 		return "";
 	}
 
@@ -130,15 +143,14 @@ public class Cipher {
 	 * Returns the result of decrypting cipherText with the key code.
 	 * 
 	 * @param alphabet
-	 *          the alphabet to be used for the encryption
+	 *            the alphabet to be used for the encryption
 	 * @param cipherText
-	 *          the encrypted text.
+	 *            the encrypted text.
 	 * @param code
-	 *          the decryption key
+	 *            the decryption key
 	 * @return returns the decrypted cipherText.
 	 */
-	public static String vigenereCipherDecrypt(String cipherText, String code,
-			String alphabet) {
+	public static String vigenereCipherDecrypt(String cipherText, String code, String alphabet) {
 		return "";
 	}
 
@@ -151,10 +163,12 @@ public class Cipher {
 	 * stripped out.
 	 * 
 	 * @param plaintext
-	 *          The plaintext string you wish to remove illegal characters from
+	 *            The plaintext string you wish to remove illegal characters
+	 *            from
 	 * @param alphabet
-	 *          A string of all legal characters.
-	 * @return String A copy of plain with all characters not in alphabet removed.
+	 *            A string of all legal characters.
+	 * @return String A copy of plain with all characters not in alphabet
+	 *         removed.
 	 */
 	private static String stripInvalidChars(String plaintext, String alphabet) {
 		StringBuilder b = new StringBuilder();
@@ -164,8 +178,8 @@ public class Cipher {
 			else
 				// otherwise skip it &
 				System.out.println("Stripping letter: \"" + plaintext.charAt(i) // display
-																																				// a
-																																				// message
+																				// a
+																				// message
 						+ "\"");
 		}
 		return b.toString();
