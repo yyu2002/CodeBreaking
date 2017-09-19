@@ -24,6 +24,9 @@ public class Cipher {
 	 */
 	public static String rotationCipherEncrypt(String plainText, int shiftAmount,
 			String alphabet) {
+		
+		// my solutoin is the best!!
+		
 		return "";
 	}
 
