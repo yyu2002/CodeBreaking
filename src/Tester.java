@@ -2,10 +2,10 @@
 public class Tester {
 
 	public static void main(String[] args) {
-		String plainText = "Nima's pants are on fire!!!?!!";
-		String cipherText = Cipher.rotationCipherEncrypt(plainText, 3);
+		String plaintext = "the quick brown fox jumped over the lazy dogs";
+		String cipherText = Cipher.rotationCipherEncrypt(plaintext, 3, Cipher.ALPHABET);
 
-		System.out.println("Plaintext: " + plainText);
+		System.out.println("Plaintext: " + plaintext);
 		System.out.println("Cipertext: " + cipherText);
 	}
 
