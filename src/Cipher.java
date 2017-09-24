@@ -8,7 +8,10 @@ import java.nio.file.Files;
 public class Cipher {
 	public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.() '\"![]/%_;?-=:\n";
 	public static final String SIMPLE_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ";
-
+	
+	private static final int FORWARD = 1;
+	private static final int BACKWARD = -1;
+	
 	// Set this variable to the default alphabet you wish to use
 	private static final String DEFAULT_ALPHABET = ALPHABET;
 
@@ -24,13 +27,12 @@ public class Cipher {
 	 *            the number of characters in ALPHABET to shift by.
 	 * @return returns the encrypted plainText.
 	 */
-	public static String rotationCipherEncrypt(String plainText, int shiftAmount, String alphabet) 
+	public static String rotationCipherEncrypt(String plainText, int shiftAmount, String alphabet) {
 		String output = "";
 
 		for (int i = 0; i < plainText.length(); i++) {
 			String plainLetter = plainText.substring(i, i + 1);
-			String encodedLetter = rotateLetter(plainLetter, shiftAmount, alphabet);
-			output += encodedLetter;
+			output += rotateLetter(plainLetter, shiftAmount, alphabet);
 		}
 
 		return output;
@@ -131,7 +133,7 @@ public class Cipher {
 	 * @return returns the encrypted plainText.
 	 */
 	public static String vigenereCipherEncrypt(String plainText, String code, String alphabet) {
-		return "";
+		return vigenereCipherShift(plainText, code, alphabet, FORWARD);
 	}
 
 	public static String vigenereCipherEncrypt(String plainText, String code) {
@@ -150,11 +152,30 @@ public class Cipher {
 	 * @return returns the decrypted cipherText.
 	 */
 	public static String vigenereCipherDecrypt(String cipherText, String code, String alphabet) {
-		return "";
+		return vigenereCipherShift(cipherText, code, alphabet, BACKWARD);
 	}
 
 	public static String vigenereCipherDecrypt(String cipherText, String code) {
 		return vigenereCipherDecrypt(cipherText, code, DEFAULT_ALPHABET);
+	}
+
+	private static String vigenereCipherShift(String text, String code, String alphabet, int direction) {
+		String output = "";
+		int codeLetterIndex = 0;
+
+		for (int i = 0; i < text.length(); i++) {
+			String plainLetter = text.substring(i, i + 1);
+			String shiftLetter = code.substring(codeLetterIndex, codeLetterIndex + 1);
+			codeLetterIndex++;
+			codeLetterIndex = codeLetterIndex % code.length();
+			int shiftAmount = alphabet.indexOf(shiftLetter);
+			if (shiftAmount != -1) {
+				String encodedLetter = rotateLetter(plainLetter, direction*shiftAmount, alphabet);
+				output += encodedLetter;
+			}
+		}
+		
+		return output;
 	}
 
 	/**
