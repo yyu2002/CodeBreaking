@@ -24,8 +24,7 @@ public class Cipher {
 	 *            the number of characters in ALPHABET to shift by.
 	 * @return returns the encrypted plainText.
 	 */
-	public static String rotationCipherEncrypt(String plainText, int shiftAmount, String alphabet) {
-
+	public static String rotationCipherEncrypt(String plainText, int shiftAmount, String alphabet) 
 		String output = "";
 
 		for (int i = 0; i < plainText.length(); i++) {
@@ -68,7 +67,7 @@ public class Cipher {
 	 * @return returns the decrypted cipherText.
 	 */
 	public static String rotationCipherDecrypt(String cipherText, int shiftAmount, String alphabet) {
-		return "";
+		return rotationCipherEncrypt(cipherText, -shiftAmount, alphabet);
 	}
 
 	public static String rotationCipherDecrypt(String cipherText, int shiftAmount) {
