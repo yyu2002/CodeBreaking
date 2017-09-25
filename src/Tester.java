@@ -7,6 +7,5 @@ public class Tester {
 		
 		String plainText = Cipher.rotationCipherDecrypt(cipherText, -20);
 		System.out.println("PLAINTEXT IS: \n" + plainText);
-		
 	}
 }
