@@ -8,10 +8,10 @@ import java.nio.file.Files;
 public class Cipher {
 	public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.() '\"![]/%_;?-=:\n";
 	public static final String SIMPLE_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ";
-	
+
 	private static final int FORWARD = 1;
 	private static final int BACKWARD = -1;
-	
+
 	// Set this variable to the default alphabet you wish to use
 	private static final String DEFAULT_ALPHABET = ALPHABET;
 
@@ -170,11 +170,11 @@ public class Cipher {
 			codeLetterIndex = codeLetterIndex % code.length();
 			int shiftAmount = alphabet.indexOf(shiftLetter);
 			if (shiftAmount != -1) {
-				String encodedLetter = rotateLetter(plainLetter, direction*shiftAmount, alphabet);
+				String encodedLetter = rotateLetter(plainLetter, direction * shiftAmount, alphabet);
 				output += encodedLetter;
 			}
 		}
-		
+
 		return output;
 	}
 
