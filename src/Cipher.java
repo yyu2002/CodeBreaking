@@ -237,5 +237,50 @@ public class Cipher {
 
 		return true;
 	}
+	
+	/***
+	 * Return true if input text is probably English (as opposed to cipherText)
+	 * @param text
+	 * @return true if input text is English, false otherwise
+	 */
+	public static boolean isEnglish(String text) {
+		String[] words = text.split(" ");
+		Dictionary dict = Dictionary.buildDictionary("text/words.txt");
+		
+		// loop over words
+		//    use dictionary methods to test if they're English
+		
+		return false;
+	}
 
+	/***
+	 * Brute force attack cipherText by trying all possible rotation amounts until we have plaintext.
+	 * 
+	 * @param cipherText the cipher text
+	 * @return the rotation amount the original cipher was encoded with
+	 */
+	public static int bruteForceCrackRotation(String cipherText) {
+		return 0;
+	}
+
+	/***
+	 * Brute force attack cipherText by trying all possible passwords of length 2.
+	 * @param cipherText
+	 * @return the correct password for this text.
+	 */
+	public static String bruteForceCrackLength2Password(String cipherText) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/***
+	 * Brute force attack cipherText by trying all possible passwords of length 3.
+	 * @param cipherText
+	 * @return the correct password for this text.
+	 */
+	public static String bruteForceCrackLength3Password(String cipherText) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
