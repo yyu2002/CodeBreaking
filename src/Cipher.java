@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
 
 public class Cipher {
 	public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.() '\"![]/%_;?-=:\n";
@@ -169,12 +171,33 @@ public class Cipher {
 		return b.toString();
 	}
 
-	public static String loadFileAsString(String filepath) {
-		return "";
+	public static String loadFileAsString(String filename) {
+		String content = "ERROR"; // default value that gets overwritten
+		try {
+			ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+			URL resource = classLoader.getResource(filename);
+			File file = new File(resource.toURI());
+
+			// Read File Content
+			content = new String(Files.readAllBytes(file.toPath()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return content;
 	}
 
-	public static String saveStringToFile(String contents, String filepath) {
-		return "";
+	public static boolean saveStringToFile(String contents, String filepath) {
+		File outFile = new File(filepath);
+
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFile))) {
+			writer.write(contents);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		return true;
 	}
 
 }
