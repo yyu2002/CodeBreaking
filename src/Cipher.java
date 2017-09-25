@@ -27,7 +27,20 @@ public class Cipher {
 	 *            the number of characters in ALPHABET to shift by.
 	 * @return returns the encrypted plainText.
 	 */
+<<<<<<< Updated upstream
 	public static String rotationCipherEncrypt(String plainText, int shiftAmount, String alphabet) {
+=======
+<<<<<<< Updated upstream
+	public static String rotationCipherEncrypt(String plainText, int shiftAmount,
+			String alphabet) {
+		
+		// my solutoin is the best!!
+		
+		return "";
+=======
+	public static String rotationCipherEncrypt(String plainText, int shiftAmount, String alphabet) {
+		plainText = stripInvalidChars(plainText, alphabet);
+>>>>>>> Stashed changes
 		String output = "";
 
 		for (int i = 0; i < plainText.length(); i++) {
@@ -50,6 +63,10 @@ public class Cipher {
 			index -= alphabet.length();
 
 		return alphabet.substring(index, index + 1);
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 	}
 
 	public static String rotationCipherEncrypt(String plainText, int shiftAmount) {
@@ -132,8 +149,20 @@ public class Cipher {
 	 *            the code to use as the encryption key.
 	 * @return returns the encrypted plainText.
 	 */
+<<<<<<< Updated upstream
 	public static String vigenereCipherEncrypt(String plainText, String code, String alphabet) {
 		return vigenereCipherShift(plainText, code, alphabet, FORWARD);
+=======
+<<<<<<< Updated upstream
+	public static String vigenereCipherEncrypt(String plainText, String code,
+			String alphabet) {
+		return "";
+=======
+	public static String vigenereCipherEncrypt(String plainText, String code, String alphabet) {
+		plainText = stripInvalidChars(plainText, alphabet);
+		return vigenereCipherShift(plainText, code, alphabet, FORWARD);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 	}
 
 	public static String vigenereCipherEncrypt(String plainText, String code) {
@@ -159,6 +188,11 @@ public class Cipher {
 		return vigenereCipherDecrypt(cipherText, code, DEFAULT_ALPHABET);
 	}
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 	private static String vigenereCipherShift(String text, String code, String alphabet, int direction) {
 		String output = "";
 		int codeLetterIndex = 0;
@@ -166,8 +200,15 @@ public class Cipher {
 		for (int i = 0; i < text.length(); i++) {
 			String plainLetter = text.substring(i, i + 1);
 			String shiftLetter = code.substring(codeLetterIndex, codeLetterIndex + 1);
+<<<<<<< Updated upstream
 			codeLetterIndex++;
 			codeLetterIndex = codeLetterIndex % code.length();
+=======
+			
+			codeLetterIndex++;
+			codeLetterIndex = codeLetterIndex % code.length();
+			
+>>>>>>> Stashed changes
 			int shiftAmount = alphabet.indexOf(shiftLetter);
 			if (shiftAmount != -1) {
 				String encodedLetter = rotateLetter(plainLetter, direction * shiftAmount, alphabet);
@@ -178,6 +219,10 @@ public class Cipher {
 		return output;
 	}
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 	/**
 	 * returns a copy of the input plaintext String with invalid characters
 	 * stripped out.
