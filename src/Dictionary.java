@@ -19,6 +19,10 @@ public class Dictionary {
 		return words.containsKey(word);
 	}
 
+	public String[] getWordList() {
+		return words.keySet().toArray(new String[words.size()]);
+	}
+
 	public static Dictionary buildDictionary(String filename) {
 		if (d != null)
 			return d;

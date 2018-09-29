@@ -28,29 +28,8 @@ public class Cipher {
 	 * @return returns the encrypted plainText.
 	 */
 	public static String rotationCipherEncrypt(String plainText, int shiftAmount, String alphabet) {
-		plainText = stripInvalidChars(plainText, alphabet);
-		String output = "";
 
-		for (int i = 0; i < plainText.length(); i++) {
-			String plainLetter = plainText.substring(i, i + 1);
-			output += rotateLetter(plainLetter, shiftAmount, alphabet);
-		}
-
-		return output;
-	}
-
-	private static String rotateLetter(String plainLetter, int shiftAmount, String alphabet) {
-		int index = alphabet.indexOf(plainLetter);
-		if (index == -1)
-			return "";
-
-		index += shiftAmount;
-		while (index < 0)
-			index += alphabet.length();
-		while (index >= alphabet.length())
-			index -= alphabet.length();
-
-		return alphabet.substring(index, index + 1);
+		return "Need to implement rotationCipherEncrypt";
 	}
 
 	public static String rotationCipherEncrypt(String plainText, int shiftAmount) {
@@ -70,7 +49,7 @@ public class Cipher {
 	 * @return returns the decrypted cipherText.
 	 */
 	public static String rotationCipherDecrypt(String cipherText, int shiftAmount, String alphabet) {
-		return rotationCipherEncrypt(cipherText, -shiftAmount, alphabet);
+		return "Need to implement rotationCipherDeccrypt";
 	}
 
 	public static String rotationCipherDecrypt(String cipherText, int shiftAmount) {
@@ -92,7 +71,7 @@ public class Cipher {
 	 * @return returns the encrypted plainText.
 	 */
 	public static String permutationCipherEncrypt(String plainText, String permutation, String alphabet) {
-		return "";
+		return "Need to implement permutationCipherEncrypt";
 	}
 
 	/**
@@ -107,7 +86,7 @@ public class Cipher {
 	 * @return returns the decrypted cipherText.
 	 */
 	public static String permutationCipherDecrypt(String cipherText, String code, String alphabet) {
-		return "";
+		return "Need to implement permutationCipherDecrypt";
 	}
 
 	/***
@@ -134,8 +113,7 @@ public class Cipher {
 	 * @return returns the encrypted plainText.
 	 */
 	public static String vigenereCipherEncrypt(String plainText, String code, String alphabet) {
-		plainText = stripInvalidChars(plainText, alphabet);
-		return vigenereCipherShift(plainText, code, alphabet, FORWARD);
+		return "Need to implement cigenereCipherEncrypt";
 	}
 
 	public static String vigenereCipherEncrypt(String plainText, String code) {
@@ -154,32 +132,11 @@ public class Cipher {
 	 * @return returns the decrypted cipherText.
 	 */
 	public static String vigenereCipherDecrypt(String cipherText, String code, String alphabet) {
-		return vigenereCipherShift(cipherText, code, alphabet, BACKWARD);
+		return "need to implement vigenereCipherDecrypt";
 	}
 
 	public static String vigenereCipherDecrypt(String cipherText, String code) {
-		return vigenereCipherDecrypt(cipherText, code, DEFAULT_ALPHABET);
-	}
-
-	private static String vigenereCipherShift(String text, String code, String alphabet, int direction) {
-		String output = "";
-		int codeLetterIndex = 0;
-
-		for (int i = 0; i < text.length(); i++) {
-			String plainLetter = text.substring(i, i + 1);
-			String shiftLetter = code.substring(codeLetterIndex, codeLetterIndex + 1);
-
-			codeLetterIndex++;
-			codeLetterIndex = codeLetterIndex % code.length();
-
-			int shiftAmount = alphabet.indexOf(shiftLetter);
-			if (shiftAmount != -1) {
-				String encodedLetter = rotateLetter(plainLetter, direction * shiftAmount, alphabet);
-				output += encodedLetter;
-			}
-		}
-
-		return output;
+		return "need to implement vigenereCipherDecrypt";
 	}
 
 	/**
@@ -195,34 +152,39 @@ public class Cipher {
 	 *         removed.
 	 */
 	private static String stripInvalidChars(String plaintext, String alphabet) {
+	    int count = 0;
 		StringBuilder b = new StringBuilder();
 		for (int i = 0; i < plaintext.length(); i++) { // loop through plaintext
 			if (alphabet.indexOf(plaintext.charAt(i)) >= 0) // get index of char
 				b.append(plaintext.charAt(i)); // if it exists, keep it
-			else
-				// otherwise skip it &
-				System.out.println("Stripping letter: \"" + plaintext.charAt(i) // display
-																				// a
-																				// message
-						+ "\"");
+			else {
+                // otherwise skip it &
+                System.out.println("Stripping letter: \"" + plaintext.charAt(i) // display
+                        // a
+                        // message
+                        + "\"");
+            count++;
+			}
 		}
+
+        System.out.println("StripInvalidChars removed a total of " + count + " chars.");
 		return b.toString();
 	}
 
-	public static String loadFileAsString(String filename) {
-		String content = "ERROR"; // default value that gets overwritten
-		try {
-			ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-			URL resource = classLoader.getResource(filename);
-			File file = new File(resource.toURI());
+	public static String loadFileAsString(String filepath) {
+		StringBuilder output = new StringBuilder();
 
-			// Read File Content
-			content = new String(Files.readAllBytes(file.toPath()));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		try (Scanner scanner = new Scanner(new File(filepath))) {
+		    while (scanner.hasNext()) {
+		        String line = scanner.nextLine();
+		        output.append(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error in loadFileAsString(...) with filepath: " + filepath);
+		    e.printStackTrace();
+        }
 
-		return content;
+        return output.toString();
 	}
 
 	public static boolean saveStringToFile(String contents, String filepath) {
@@ -244,12 +206,7 @@ public class Cipher {
 	 * @return true if input text is English, false otherwise
 	 */
 	public static boolean isEnglish(String text) {
-		String[] words = text.split(" ");
-		Dictionary dict = Dictionary.buildDictionary("text/words.txt");
-		
-		// loop over words
-		//    use dictionary methods to test if they're English
-		
+		// you implement this!
 		return false;
 	}
 

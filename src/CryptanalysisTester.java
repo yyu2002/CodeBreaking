@@ -1,16 +1,14 @@
 
-public class Tester {
+public class CryptanalysisTester {
 
 	public static void main(String[] args) {
 		String cipherText, plainText, password;
-
-		System.out.println(Cipher.rotationCipherEncrypt("the quick brown fox jumped over the lazy dogs", 3));
 
 		// -========== CRACK CIPHER 1 ===========-
 		// cipherText1.txt was encoded with a rotation cipher
 		// -=====================================-
 		
-/*		cipherText = Cipher.loadFileAsString("cipherText1.txt");
+		cipherText = Cipher.loadFileAsString("text/cipherText1.txt");
 		System.out.println("Cipher text 1:\n" + cipherText);
 
 		int rotAmount = Cipher.bruteForceCrackRotation(cipherText);
@@ -18,9 +16,8 @@ public class Tester {
 		
 		plainText = Cipher.rotationCipherDecrypt(cipherText, rotAmount);
 		
-		System.out.println("PLAINTEXT IS: " + plainText);	*/
-		
-		
+		System.out.println("PLAINTEXT IS: " + plainText);
+
 		// -========== CRACK CIPHER 2 ===========-
 		// cipherText2.txt was encoded with a 2-letter password
 		// ---------------------------------------
