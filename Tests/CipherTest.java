@@ -68,4 +68,36 @@ public class CipherTest {
 		String testCipherText = Cipher.rotationCipherEncrypt(plaintext, 100, Cipher.ALPHABET);
 		assertEquals(testCipherText, correctCipherText);
 	}
+
+	@Test
+	public void vigenereCipherEncryptWith3LetterPassword() {
+		String plaintext = "the quick brown fox jumped over the lazy dogs";
+		String correctCipherText = "2w)uFaRr]uq=XL_uu;6a[3B?NsUXK)0a\nQtUUpf7a(Xv:";
+		String testCipherText = Cipher.vigenereCipherEncrypt(plaintext, "Jp9", Cipher.ALPHABET);
+		assertEquals(correctCipherText, testCipherText);
+	}
+
+	@Test
+	public void vigenereCipherEncryptWithLongerPassword() {
+		String plaintext = "\"THE\nQUICK\nBROWN FOX. JUMPED OVER THE LAZY DOGS!\"";
+		String correctCipherText = "(EeNbfX.6]2czwSyLOQm o)amqml,zsNTDW,8ulbHG,olPUG]";
+		String testCipherText = Cipher.vigenereCipherEncrypt(plaintext, "- 0jcSdDEJ34..", Cipher.ALPHABET);
+		assertEquals(correctCipherText, testCipherText);
+	}
+
+	@Test
+	public void vigenereCipherDecryptWith3LetterPassword() {
+		String correctPlainText = "the quick brown fox jumped over the lazy dogs";
+		String cipherText = "2w)uFaRr]uq=XL_uu;6a[3B?NsUXK)0a\nQtUUpf7a(Xv:";
+		String testPlainText = Cipher.vigenereCipherDecrypt(cipherText, "Jp9", Cipher.ALPHABET);
+		assertEquals(correctPlainText, testPlainText);
+	}
+
+	@Test
+	public void vigenereCipherDecryptWithLongerPassword() {
+		String correctPlainText = "\"THE\nQUICK\nBROWN FOX. JUMPED OVER THE LAZY DOGS!\"";
+		String cipherText = "(EeNbfX.6]2czwSyLOQm o)amqml,zsNTDW,8ulbHG,olPUG]";
+		String testPlainText = Cipher.vigenereCipherDecrypt(cipherText, "- 0jcSdDEJ34..", Cipher.ALPHABET);
+		assertEquals(correctPlainText, testPlainText);
+	}
 }
