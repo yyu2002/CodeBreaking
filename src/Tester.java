@@ -4,7 +4,9 @@ public class Tester {
 	public static void main(String[] args) {
 		String cipherText, plainText, password;
 
-		System.out.println(Cipher.rotationCipherEncrypt("the quick brown fox jumped over the lazy dogs", 3));
+		System.out.println(Cipher.vigenereCipherEncrypt("the quick brown fox jumped over the lazy dogs", "code"));
+		System.out.println(Cipher.vigenereCipherDecrypt("vvh[sIlgm\n" +
+				"evqKq[hCA[lIptgr!sxsu[vvh[noCC\"rrku", "code"));
 
 		// -========== CRACK CIPHER 1 ===========-
 		// cipherText1.txt was encoded with a rotation cipher
