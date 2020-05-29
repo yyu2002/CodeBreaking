@@ -1,5 +1,5 @@
 # CodeBreaking
-Encrypt and decrypt vigenere, caesar, and polybius square ciphers. Implemented brute force and frequency analysis to quickly crack vigenere ciphers.
+Encrypt and decrypt vigenere, polybius square, and caesar ciphers. Implemented brute force and frequency analysis to quickly crack vigenere ciphers.
 
 ## To add repository for contributors
 `git clone https://github.com/yyu2002/CodeBreaking`
